@@ -12,6 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <form action="address" method="post">
+            
         <div id="container" style="width:100%;">                                   
   <div id="left" style="float:left; width:50%;"> This is left panel
   <br>
@@ -49,7 +51,7 @@
   </div>                   
 </div>    
        
-        
+        </form>      
         
     </body>
 </html>
