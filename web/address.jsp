@@ -4,35 +4,67 @@
     Author     : neha
 --%>
 
+<%@page import="add_mgmnt.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+        <script lang="javascript">
+           
+            function addRow(){
+              
+    var table = document.getElementById("mytable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "Address";
+     var element=document.createElement("textarea");
+              addRow.count++;
+              
+               var c="address";
+               var res=c.concat(addRow.count);
+               alert(res);
+                element.setAttribute("name",res);
+                element.setAttribute("rows","5");
+                element.setAttribute("cols","40");
+                
+              
+               
+            
+                 cell2.appendChild(element);
+    
+}
+addRow.count=0;
+             
+            </script>
     </head>
     <body>
-       
-       
+     
+        
         <h1>Welcome User!</h1>
         <br><br>
-        <table border="0">
+        <form action="add_list">
+        <table border="0" >
             <tr><td>username :</td>
-                <td>${user.name}</td></tr>
+             <td><%= request.getParameter("log_uname")%></td></tr> 
         <tr>
             <td>contact </td>
-            <td>${user.phone}</td>
+            <td><%= request.getAttribute("log_phone")%></td>
         </tr>
-        <tr>
-            <td>Address 1</td><td> <input type="text" name="address1"></td></tr>
-        <tr><td>
-                Address 2</td><td> <input type="text" name="address2"></td></tr>
-        <tr><td>
-                Address 3 </td> <td><input type="text" name="address3"></td></tr>
+        
         </table>
+        
         <br>
+        <input type="button" value="Add"  onclick="addRow()" ><br>
+        
+        <table border="0" id="mytable">
+        
+        </table>
         <input type="submit" value="submit">
+        </form>
     </body>
 </html>

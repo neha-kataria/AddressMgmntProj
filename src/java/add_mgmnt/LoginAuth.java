@@ -7,7 +7,9 @@ package add_mgmnt;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +25,10 @@ public class LoginAuth extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        // super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
        PrintWriter out=resp.getWriter();
-       if(req.getParameter("log_uname").equals("admin"))
+       //req.getSession()
+     //   ArrayList<RegisterUserBean> ob=(ArrayList<RegisterUserBean>) this.getServletConfig().getServletContext().getAttribute("userdetails");
+       UserBean ob=(UserBean) this.getServletConfig().getServletContext().getAttribute("userdetails");
+        if(req.getParameter("log_uname").equals("admin"))
        {
            if(req.getParameter("log_pass").equals("123456")){
            out.print("Welcome admin");
@@ -35,7 +40,30 @@ public class LoginAuth extends HttpServlet{
            }
        }
        else{
-           out.print("welcome "+req.getParameter("log_uname"));
+           String name=req.getParameter("log_uname");
+           String pass=req.getParameter("log_pass");
+         
+          // out.print("welcome "+name+" & "+pass);
+            
+            for(RegisterUserBean u:ob.getUserList())
+            { 
+               if(u.getName().equals(name))
+               {
+                   if(u.getPass().equals(pass))
+                   {
+                       out.print("welcome "+req.getParameter("log_uname"));
+                        req.setAttribute("log_phone",u.getPhone() );
+                      
+                       RequestDispatcher rd=req.getRequestDispatcher("address.jsp");
+                       rd.forward(req, resp);
+                   }
+                    else{
+                   out.print("wrong credentials");
+                    }
+               }
+              
+           }
+         //  out.print("welcome "+req.getParameter("log_uname"));
            
        }
     }
