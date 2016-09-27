@@ -46,7 +46,8 @@ public class RegisterUserBean {
     }
 
     public void setAddress(ArrayList<String> address) {
-        this.address = address;
+        //this.address = address;
+        this.address.addAll(address);
     }
     
     

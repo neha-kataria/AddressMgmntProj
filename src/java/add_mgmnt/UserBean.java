@@ -27,6 +27,12 @@ public class UserBean {
         return userList;
     }
     
+    public void setAddress(RegisterUserBean ob,ArrayList<String> addr){
+        int i=userList.indexOf(ob);
+        RegisterUserBean user=userList.get(i);
+        user.setAddress(addr);
+    }
+    
     
     
 }

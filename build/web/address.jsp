@@ -4,6 +4,7 @@
     Author     : neha
 --%>
 
+<%@page import="add_mgmnt.RegisterUserBean"%>
 <%@page import="add_mgmnt.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -36,7 +37,8 @@
                
             
                  cell2.appendChild(element);
-    
+                 
+    document.getElementById("hiddenField").value=addRow.count;
 }
 addRow.count=0;
              
@@ -47,23 +49,28 @@ addRow.count=0;
         
         <h1>Welcome User!</h1>
         <br><br>
-        <form action="add_list">
+        <form action="addr_list" method="post">
         <table border="0" >
             <tr><td>username :</td>
              <td><%= request.getParameter("log_uname")%></td></tr> 
         <tr>
             <td>contact </td>
             <td><%= request.getAttribute("log_phone")%></td>
+            
         </tr>
         
         </table>
         
         <br>
         <input type="button" value="Add"  onclick="addRow()" ><br>
+        <input type="hidden" id="hiddenField" name ="countRows" />
+        
         
         <table border="0" id="mytable">
         
         </table>
+       
+           
         <input type="submit" value="submit">
         </form>
     </body>

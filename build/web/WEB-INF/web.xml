@@ -20,5 +20,12 @@
         <servlet-name>LoginAuth</servlet-name>
         <url-pattern>/login_auth</url-pattern>
     </servlet-mapping>
-   
+   <servlet>
+        <servlet-name>AddressList</servlet-name>
+        <servlet-class>add_mgmnt.AddressList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddressList</servlet-name>
+        <url-pattern>/addr_list</url-pattern>
+    </servlet-mapping>
 </web-app>

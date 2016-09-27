@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,7 +32,8 @@ public class LoginAuth extends HttpServlet{
         if(req.getParameter("log_uname").equals("admin"))
        {
            if(req.getParameter("log_pass").equals("123456")){
-           out.print("Welcome admin");
+           //out.print("Welcome admin");
+           resp.sendRedirect("AdminProfile.jsp");
            }
            else{
                req.setAttribute("Err_login", "Wrong Credentials");
@@ -53,8 +55,10 @@ public class LoginAuth extends HttpServlet{
                    {
                        out.print("welcome "+req.getParameter("log_uname"));
                         req.setAttribute("log_phone",u.getPhone() );
-                      
-                       RequestDispatcher rd=req.getRequestDispatcher("address.jsp");
+                      req.setAttribute("logged_user", u);
+                       HttpSession session=req.getSession();  
+                      session.setAttribute("logged_user", u);
+                       RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
                        rd.forward(req, resp);
                    }
                     else{
