@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/Welcome.jsp</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/WEB-INF/web.xml</file>
+            <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/AddressList.java</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/RegisterServlet.java</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/web/RegisterHere.jsp</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/RegisterUserBean.java</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/address.jsp</file>
+            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/UserProfile.jsp</file>
+            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/AdminProfile.jsp</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/LoginAuth.java</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/UserBean.java</file>
         </group>

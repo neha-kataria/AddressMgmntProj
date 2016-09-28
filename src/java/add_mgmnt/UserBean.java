@@ -32,6 +32,11 @@ public class UserBean {
         RegisterUserBean user=userList.get(i);
         user.setAddress(addr);
     }
+    public void setMembers(RegisterUserBean ob){
+        int i=userList.indexOf(ob);
+       // RegisterUserBean user=userList.get(i);
+        userList.set(i, ob);
+    }
     
     
     

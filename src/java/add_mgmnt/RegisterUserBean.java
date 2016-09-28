@@ -47,7 +47,12 @@ public class RegisterUserBean {
 
     public void setAddress(ArrayList<String> address) {
         //this.address = address;
-        this.address.addAll(address);
+        if(this.address.containsAll(address)){
+        
+        }
+        else{
+            this.address.clear();
+        this.address.addAll(address);}
     }
     
     

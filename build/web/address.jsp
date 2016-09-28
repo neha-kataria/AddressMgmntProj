@@ -41,7 +41,7 @@
     document.getElementById("hiddenField").value=addRow.count;
 }
 addRow.count=0;
-             
+             // document.getElementById("hiddenField").value=addRow.count;
             </script>
     </head>
     <body>
@@ -49,21 +49,38 @@ addRow.count=0;
         
         <h1>Welcome User!</h1>
         <br><br>
+        <% RegisterUserBean ob=(RegisterUserBean)session.getAttribute("logged_user");
+            %>
         <form action="addr_list" method="post">
         <table border="0" >
             <tr><td>username :</td>
-             <td><%= request.getParameter("log_uname")%></td></tr> 
+                <td><input type="text" value="<%= ob.getName() %>" name="edit_uname"></td></tr> 
         <tr>
             <td>contact </td>
-            <td><%= request.getAttribute("log_phone")%></td>
+            <td><input type="text" value="<%= ob.getPhone() %>" name="edit_phone"></td>
             
         </tr>
-        
+        <tr>
+            <td>password </td>
+            <td><input type="text" value="<%= ob.getPass()%>" name="edit_pass"></td>
+            
+        </tr>
+        <tr>
+            <td>address </td>
+            
+            
+        </tr>
+        <% for(int i=0;i<ob.getAddress().size();i++){
+            %><tr style="height: 70px;" >
+            <td width="50%" ></td>
+            <td width="50%" ><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
+           
+        </tr> <% } %>
         </table>
-        
+        <input type="hidden" name="edited" value="1">
         <br>
         <input type="button" value="Add"  onclick="addRow()" ><br>
-        <input type="hidden" id="hiddenField" name ="countRows" />
+        <input type="hidden" id="hiddenField" name ="countRows" value="0"/>
         
         
         <table border="0" id="mytable">

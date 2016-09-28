@@ -28,4 +28,12 @@
         <servlet-name>AddressList</servlet-name>
         <url-pattern>/addr_list</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>add_mgmnt.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
 </web-app>

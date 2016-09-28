@@ -24,7 +24,32 @@ public class AddressList extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<String> addr=new ArrayList<String>();
+        
+        HttpSession session=req.getSession();
+        RegisterUserBean logged_user=(RegisterUserBean) session.getAttribute("logged_user");
+      //  out.print(logged_user.getName());
+        UserBean list=(UserBean) this.getServletConfig().getServletContext().getAttribute("userdetails");
+         ArrayList<String> addr=new ArrayList<String>();
+        
+        if(req.getParameter("edited").equals("1")){
+            String name=req.getParameter("edit_uname");
+             String phone=req.getParameter("edit_phone");
+              String pass=req.getParameter("edit_pass");
+              for(int i=0;i<logged_user.getAddress().size();i++){
+                  String adr_param="edit_address"+i;
+                  String adr =req.getParameter(adr_param);
+                  if(!adr.equals(""))
+                  addr.add(i,adr);
+              }
+              logged_user.setName(name);
+        logged_user.setPass(pass);
+        logged_user.setPhone(phone);
+        
+        }
+        
+        
+        
+       
         int count=Integer.parseInt(req.getParameter("countRows"));
         for(int i=1;i<=count;i++){
             String s="address"+i;
@@ -33,21 +58,22 @@ public class AddressList extends HttpServlet{
             
         }
         PrintWriter out=resp.getWriter();
-     //   out.print(count);
+      // out.print(count);
         
        
         
         
-        HttpSession session=req.getSession();
-        RegisterUserBean logged_user=(RegisterUserBean) session.getAttribute("logged_user");
-      //  out.print(logged_user.getName());
-        UserBean list=(UserBean) this.getServletConfig().getServletContext().getAttribute("userdetails");
-        list.setAddress(logged_user, addr);
+        
+        logged_user.setAddress(addr);
+        list.setMembers(logged_user);
         req.setAttribute("logged_user", logged_user);
-        RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
+       RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
         rd.forward(req, resp);
+                
       //  out.print(logged_user.getAddress());
       //  resp.sendRedirect("UserProfile.jsp");
+        
+      out.close();
       
     }
     
