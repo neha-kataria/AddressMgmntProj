@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public class RegisterUserBean {
     String name,phone,pass;
+    boolean logged;
     ArrayList<String> address=new ArrayList<String>();
 
     public void setName(String name) {
@@ -23,6 +24,14 @@ public class RegisterUserBean {
 
     public String getName() {
         return name;
+    }
+
+    public boolean isLogged() {
+        return logged;
+    }
+
+    public void setLogged(boolean logged) {
+        this.logged = logged;
     }
 
     public String getPhone() {
@@ -47,12 +56,8 @@ public class RegisterUserBean {
 
     public void setAddress(ArrayList<String> address) {
         //this.address = address;
-        if(this.address.containsAll(address)){
         
-        }
-        else{
-            this.address.clear();
-        this.address.addAll(address);}
+        this.address.addAll(address);
     }
     
     

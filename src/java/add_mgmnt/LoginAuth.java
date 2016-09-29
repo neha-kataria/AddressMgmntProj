@@ -33,6 +33,7 @@ public class LoginAuth extends HttpServlet{
        {
            if(req.getParameter("log_pass").equals("123456")){
            //out.print("Welcome admin");
+           
            resp.sendRedirect("AdminProfile.jsp");
            }
            else{
@@ -46,31 +47,37 @@ public class LoginAuth extends HttpServlet{
            String pass=req.getParameter("log_pass");
          
           // out.print("welcome "+name+" & "+pass);
-            
+            int flag = 0;
             for(RegisterUserBean u:ob.getUserList())
             { 
                if(u.getName().equals(name))
                {
                    if(u.getPass().equals(pass))
-                   {
+                   { flag=1;
                        out.print("welcome "+req.getParameter("log_uname"));
                         req.setAttribute("log_phone",u.getPhone() );
+                        u.setLogged(true);
                       req.setAttribute("logged_user", u);
                        HttpSession session=req.getSession();  
                       session.setAttribute("logged_user", u);
                        RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
                        rd.forward(req, resp);
                    }
-                    else{
-                   out.print("wrong credentials");
-                    }
+                  
                }
+               
               
            }
+            if(flag==0)
+               {   req.setAttribute("Err_login", "Wrong Credentials");
+               RequestDispatcher rd=req.getRequestDispatcher("Welcome.jsp");
+               rd.forward(req, resp);
+               }
          //  out.print("welcome "+req.getParameter("log_uname"));
            
        }
+        out.close();
     }
     
-    
+   
 }

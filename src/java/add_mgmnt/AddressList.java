@@ -38,12 +38,18 @@ public class AddressList extends HttpServlet{
               for(int i=0;i<logged_user.getAddress().size();i++){
                   String adr_param="edit_address"+i;
                   String adr =req.getParameter(adr_param);
-                  if(!adr.equals(""))
-                  addr.add(i,adr);
+                  if(adr.length()==0)
+                        logged_user.address.remove(i);
+                  else
+                        logged_user.address.set(i, adr);
+                  //if(!(adr.length()==0))
+                  //  addr.add(adr);
               }
               logged_user.setName(name);
         logged_user.setPass(pass);
         logged_user.setPhone(phone);
+        
+                //   logged_user.address.add(s);
         
         }
         
@@ -53,12 +59,13 @@ public class AddressList extends HttpServlet{
         int count=Integer.parseInt(req.getParameter("countRows"));
         for(int i=1;i<=count;i++){
             String s="address"+i;
-            if(req.getParameter(s)!=null)
+            if(!req.getParameter(s).equals(""))
             addr.add(req.getParameter(s));
+            
             
         }
         PrintWriter out=resp.getWriter();
-      // out.print(count);
+      // out.print(addr);
         
        
         
@@ -67,8 +74,8 @@ public class AddressList extends HttpServlet{
         logged_user.setAddress(addr);
         list.setMembers(logged_user);
         req.setAttribute("logged_user", logged_user);
-       RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
-        rd.forward(req, resp);
+      RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
+       rd.forward(req, resp);
                 
       //  out.print(logged_user.getAddress());
       //  resp.sendRedirect("UserProfile.jsp");

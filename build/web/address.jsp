@@ -73,7 +73,7 @@ addRow.count=0;
         <% for(int i=0;i<ob.getAddress().size();i++){
             %><tr style="height: 70px;" >
             <td width="50%" ></td>
-            <td width="50%" ><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
+            <td width="50%" ><%= "edit_address"+i %><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
            
         </tr> <% } %>
         </table>

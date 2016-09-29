@@ -70,11 +70,13 @@ function deleteRow() {
 
 
 				table.deleteRow(rowCount-1);
-					rowCount--;
+					//rowCount--;
+                                        addRow.c--;
 					i--;
                                         
        
-del_button();
+//del_button();
+document.getElementById("hiddenField").value=addRow.c;
 }
 function del_button()
 {
@@ -109,7 +111,7 @@ function edit_row(no)
        <!-- <div style="margin-left: 90%;"> -->
       
        <form action="logout" method="get"> <input type="submit" value="Logout" style="margin-left: 85%; width: 180px;height: 30px"> </form>
-       <input type="button" value="Edit Profile" style="margin-left: 85%; width: 180px;height: 30px" onclick="window.location='address.jsp'" > </div>
+       <input type="button" value="Edit Profile" style="margin-left: 85%; width: 180px;height: 30px;" onclick="window.location='address.jsp'" > </div>
         <% RegisterUserBean logged_user=(RegisterUserBean)session.getAttribute("logged_user");
         
         %>
@@ -131,7 +133,7 @@ function edit_row(no)
             %><tr style="height: 70px;" >
             <td width="50%" ></td>
             <td width="50%" ><%= logged_user.getAddress().get(i) %></td> 
-            <td><input type="button" value="Edit" onclick="editAddr()"><input type="button" value="Delete" onclick="deleteAddr()"></td>
+           <!-- <td><input type="button" value="Edit" onclick="editAddr()"><input type="button" value="Delete" onclick="deleteAddr()"></td> -->
         </tr> <% } %>
         </table>
         <br><br><br>

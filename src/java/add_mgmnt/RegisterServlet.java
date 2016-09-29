@@ -51,6 +51,7 @@ public class RegisterServlet extends HttpServlet{
         user.setName(name);
         user.setPhone(phone);
         user.setPass(pwd);
+        user.setLogged(false);
         member.add(user);
        
         l.setUserList(member);
