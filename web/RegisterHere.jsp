@@ -34,7 +34,7 @@ function myBlurFunction(i) {
                 String status=(String)session.getAttribute("failed");
                 if(status!=null){
             if(status.equals("user")){%>
-            <h4 align="center">Registration failed! username already exists</h4>
+            <h4 align="center">Registration failed! either invalid or username exists </h4>
             <%}
             else if(status.equals("phone")){ %>
             <h4 align="center">Registration failed! invalid phone number</h4>

@@ -22,11 +22,13 @@
         </script>
     </head>
     <body>
-        <h1 align="left" style="font-family: sans-serif;font-size: 28px;font-weight: bold;color: green">Welcome Admin!</h1>
+        <h1 align="left" style="font-family: sans-serif;font-size: 28px;font-weight: bold;color: green;margin-left: 30%;">Welcome Admin!</h1>
         <br>
         <input type="hidden" name="admin" value="hidden" >
-        <input type="button" name="admin" value="Logout" onclick="window.location='Welcome.jsp'" style="margin-left: 80%">
-        <h2 align="left" style="font-family: sans-serif;font-size: 22px;font-weight: bold;color: green;margin-left: 10%;">List of users</h2>
+        <input type="button" name="admin" value="Logout" onclick="window.location='Welcome.jsp'" style="margin-left: 70%">
+        <h2 align="left" style="font-family: sans-serif;font-size: 22px;font-weight: bold;color: green;margin-left: 30%;">List of users</h2>
+        <table border="0"  style="margin-left: 30%;display: box; width: 40%;">
+            <tr style="text-align: left; height:30px;"> <th>S.No.</th><th>Username</th><th>Current Status</th><th>View Address</th></tr>
         <% UserBean all_users=(UserBean)application.getAttribute("userdetails"); 
         if(all_users!=null){
         int num=all_users.getUserList().size();
@@ -36,13 +38,12 @@
             RegisterUserBean ob=all_users.getUserList().get(i);
             //ob.getAddress();
         %>
-        <br><br><br>
-        <table border="1"  style="margin-left: 10%;display: box; width: 40%;">
-         
+        
+       
             <tr style="text-align: left; height:30px;">
                 
                 <td style="width:10%" ><%=i+1 %></td>
-                <td style="width:30%">UserName :</td>  
+             <!--   <td style="width:30%">UserName :</td>    -->
                 <td style="width:30%"><%=ob.getName() %></td>
                 <td style="width:20%"><% if(ob.isLogged()){ %> Logged In<% }else{ %> Logged Out <% } %></td>
                 <td style="width:30%"><input type="button" value="Address" onclick="showAddrPop('<%= ob.getAddress() %>')"></td>
@@ -51,13 +52,13 @@
           
                 
            
-         </table>
+         
         <%
             }
        }
         
         %>
-       
+       </table>
         <h1></h1><br>
         <h2></h2>
         

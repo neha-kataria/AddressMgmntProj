@@ -26,10 +26,10 @@ public class LoginAuth extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        
        PrintWriter out=resp.getWriter();
-       //req.getSession()
-     //   ArrayList<RegisterUserBean> ob=(ArrayList<RegisterUserBean>) this.getServletConfig().getServletContext().getAttribute("userdetails");
+      //userdetails consist of list of users so far
        UserBean ob=(UserBean) this.getServletConfig().getServletContext().getAttribute("userdetails");
-        if(req.getParameter("log_uname").equals("admin"))
+   //hard code for admin
+       if(req.getParameter("log_uname").equals("admin"))
        {
            if(req.getParameter("log_pass").equals("123456")){
            //out.print("Welcome admin");
@@ -54,7 +54,7 @@ public class LoginAuth extends HttpServlet{
                {
                    if(u.getPass().equals(pass))
                    { flag=1;
-                       out.print("welcome "+req.getParameter("log_uname"));
+                      // out.print("welcome "+req.getParameter("log_uname"));
                         req.setAttribute("log_phone",u.getPhone() );
                         u.setLogged(true);
               //        req.setAttribute("logged_user", u);

@@ -28,7 +28,7 @@
               
                var c="address";
                var res=c.concat(addRow.count);
-               alert(res);
+             //  alert(res);
                 element.setAttribute("name",res);
                 element.setAttribute("rows","5");
                 element.setAttribute("cols","40");
@@ -67,14 +67,14 @@ addRow.count=0;
             
         </tr>
         <tr>
-            <td>address </td>
+            <td>Your Address List: </td>
             
             
         </tr>
         <% for(int i=0;i<ob.getAddress().size();i++){
             %><tr style="height: 70px;" >
-            <td width="50%" ></td>
-            <td width="50%" ><%= "edit_address"+i %><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
+            <td width="50%" ><%= "Address "+(i+1) %></td>
+            <td width="50%" ><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
            
         </tr> <% } %>
         </table>
