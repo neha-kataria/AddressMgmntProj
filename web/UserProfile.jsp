@@ -12,28 +12,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User Profile</title>
         <script lang="javascript">
+            
 function addRow(){
-var table=document.getElementById("addr_table");
-addRow.c++;
+    var table=document.getElementById("addr_table");
+            addRow.c++;
+            addRow.first_flag++;
 
-var rowCount = table.rows.length;
+                        var rowCount = table.rows.length;
 			var row = table.insertRow(rowCount);
 
 
 // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
 var cell1 = row.insertCell(0);
-//var cell2 = row.insertCell(1);
 
-// Add some text to the new cells:
-//cell1.innerHTML = addRow.c;
 var cell2 = row.insertCell(1);
-    cell1.innerHTML = "Address"+addRow.c;
-     var element=document.createElement("textarea");
-              addRow.count++;
+
+        cell1.innerHTML = "Address"+addRow.c;
+         var element=document.createElement("textarea");
+           
               
                var c="address";
                var res=c.concat(addRow.c);
-               alert(res);
+                alert(res);
                 element.setAttribute("name",res);
                 element.setAttribute("rows","5");
                 element.setAttribute("cols","40");
@@ -42,11 +42,11 @@ var cell2 = row.insertCell(1);
                
             
                  cell2.appendChild(element);
-                 
-    document.getElementById("hiddenField").value=addRow.c;
+                 ob.count=addRow.c;
+ document.getElementById("hiddenField").value=ob.count;
  //username
 //cell3.innerHTML=content;
-if(addRow.c==1){
+if(addRow.first_flag==1){
 var ele_button=document.createElement("input");
 ele_button.setAttribute("type","submit");
 ele_button.setAttribute("value","submit");
@@ -55,14 +55,16 @@ ele_button.setAttribute("style","margin:auto;display:block;");
 
 document.getElementById("submit_space").appendChild(ele_button);
 }
+
+
+var del_but=document.getElementById("del_row");
+del_but.setAttribute("style","margin:auto;display:block;visibility: visible;");
 //<input type="submit" value="submit" style="position: absolute;top: auto; left:50%">
 }
 
 
         
         
-        addRow.c=0;
-
 function deleteRow() {
 		
 			var table = document.getElementById("addr_table");
@@ -70,38 +72,26 @@ function deleteRow() {
 
 
 				table.deleteRow(rowCount-1);
-					//rowCount--;
-                                        addRow.c--;
-					i--;
+					rowCount--;
+                            
                                         
-       
-//del_button();
-document.getElementById("hiddenField").value=addRow.c;
-}
-function del_button()
-{
-    document.getElementById("submit_space").remove();
-    
+      ob.count--;
+
+
+                          alert("rowCount" + ob.count);
+     document.getElementById("hiddenField").value=ob.count;
+     if(rowCount==0)
+     {
+         var del_but=document.getElementById("del_row");
+del_but.setAttribute("style","margin:auto;display:block;visibility: hidden;");
+     }
 }
 
-function edit_row(no)
-{
- document.getElementById("edit_button"+no).style.display="none";
- document.getElementById("save_button"+no).style.display="block";
-	
- var name=document.getElementById("name_row"+no);
- var country=document.getElementById("country_row"+no);
- var age=document.getElementById("age_row"+no);
-	
- var name_data=name.innerHTML;
- var country_data=country.innerHTML;
- var age_data=age.innerHTML;
-	
- name.innerHTML="<input type='text' id='name_text"+no+"' value='"+name_data+"'>";
- country.innerHTML="<input type='text' id='country_text"+no+"' value='"+country_data+"'>";
- age.innerHTML="<input type='text' id='age_text"+no+"' value='"+age_data+"'>";
-}   
 
+var ob=new Object();
+        ob.count=0;
+        addRow.first_flag=0;
+        addRow.c=0;
 
 </script>
     </head>
@@ -110,9 +100,13 @@ function edit_row(no)
             My Profile! 
        <!-- <div style="margin-left: 90%;"> -->
       
-       <form action="logout" method="get"> <input type="submit" value="Logout" style="margin-left: 85%; width: 180px;height: 30px"> </form>
+       <form action="logout" method="get"> 
+           <input type="submit" value="Logout" style="margin-left: 85%; width: 180px;height: 30px">
+       </form>
+       
        <input type="button" value="Edit Profile" style="margin-left: 85%; width: 180px;height: 30px;" onclick="window.location='address.jsp'" > </div>
-        <% RegisterUserBean logged_user=(RegisterUserBean)session.getAttribute("logged_user");
+        <% //if(session.getServletContext()!=null){
+            RegisterUserBean logged_user=(RegisterUserBean)session.getAttribute("logged_user");
         
         %>
         <div style="background-color: #EBECE6	 ; width: 30%;margin-left: 35%; box-shadow:5px 5px #EEEFEA  "><br>
@@ -134,17 +128,20 @@ function edit_row(no)
             <td width="50%" ></td>
             <td width="50%" ><%= logged_user.getAddress().get(i) %></td> 
            <!-- <td><input type="button" value="Edit" onclick="editAddr()"><input type="button" value="Delete" onclick="deleteAddr()"></td> -->
-        </tr> <% } %>
+        </tr> <% }  %>
         </table>
         <br><br><br>
         
         </div>
          <form action="addr_list" method="post">
-       <input type="hidden" id="hiddenField" name ="countRows" />  
-        <input type="hidden" name="edited" value="0">
+             
+       <input type="hidden" id="hiddenField" name ="countRows" >  
+       
+       <input type="hidden" name="edited" value="0">
+               
        <div style="margin-top: 5%;">
         <input type="button" value="add New Address" onclick="addRow()" style="margin:auto;display:block;">
-        <input type="button" value="delete Row"  onclick="deleteRow()" style="margin:auto;display:block;">
+        <input type="button" value="delete Row" id="del_row"   onclick="deleteRow()" style="margin:auto;display:block;visibility: hidden;">
         <br><br><br>
        </div>
         <table border="0" id="addr_table" align="center">

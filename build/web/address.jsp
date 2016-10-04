@@ -51,7 +51,8 @@ addRow.count=0;
         <br><br>
         <% RegisterUserBean ob=(RegisterUserBean)session.getAttribute("logged_user");
             %>
-        <form action="addr_list" method="post">
+        
+            <form action="addr_list" method="post">
         <table border="0" >
             <tr><td>username :</td>
                 <td><input type="text" value="<%= ob.getName() %>" name="edit_uname"></td></tr> 
@@ -62,7 +63,7 @@ addRow.count=0;
         </tr>
         <tr>
             <td>password </td>
-            <td><input type="text" value="<%= ob.getPass()%>" name="edit_pass"></td>
+            <td><input type="password" value="<%= ob.getPass()%>" name="edit_pass"></td>
             
         </tr>
         <tr>
@@ -79,7 +80,7 @@ addRow.count=0;
         </table>
         <input type="hidden" name="edited" value="1">
         <br>
-        <input type="button" value="Add"  onclick="addRow()" ><br>
+        <input type="button" value="Add address"  onclick="addRow()"  ><br>
         <input type="hidden" id="hiddenField" name ="countRows" value="0"/>
         
         
@@ -87,7 +88,7 @@ addRow.count=0;
         
         </table>
        
-           
+        <br>
         <input type="submit" value="submit">
         </form>
     </body>

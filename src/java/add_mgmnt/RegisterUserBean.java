@@ -1,6 +1,9 @@
 package add_mgmnt;
 
+// this class stores individual user entity -has attributes:name phone, passsword, multiple address stored as a list
+//bbolean flag used to maintain whthr the user is logged in or not
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -13,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author neha
  */
-public class RegisterUserBean {
+public class RegisterUserBean implements Serializable{
     String name,phone,pass;
     boolean logged;
     ArrayList<String> address=new ArrayList<String>();

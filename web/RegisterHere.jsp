@@ -4,6 +4,7 @@
     Author     : neha
 --%>
 
+<%@page import="add_mgmnt.UserBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,9 @@
 }
 function myBlurFunction(i) {
     document.getElementById(i).style.backgroundColor = "white";  
+   
+    }
+    
 }
 	</script>
     </head>
@@ -26,7 +30,18 @@ function myBlurFunction(i) {
             <br>
             Register Here!</div>
 	
-        
+            <% 
+                String status=(String)session.getAttribute("failed");
+                if(status!=null){
+            if(status.equals("user")){%>
+            <h4 align="center">Registration failed! username already exists</h4>
+            <%}
+            else if(status.equals("phone")){ %>
+            <h4 align="center">Registration failed! invalid phone number</h4>
+<%
+}
+}
+            %>
         
         <form action="register" method="post">
         
@@ -34,19 +49,15 @@ function myBlurFunction(i) {
        <!-- <table border="0" align="center">  -->
        <table width="80%" border="0" style="margin-top: 5%;margin-left:10%;display: box;text-align: left;">
             <tr style="height: 40px;" >
-                <td width="50%" >Username </td> <td><input type="text" name="reg_uname" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td></tr>
+                <td width="50%" >Username </td> <td><input type="text" name="reg_uname" id="reg_uname" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td></tr>
       
             <tr style="height: 40px;" >
-                <td width="50%" >Mobile number </td><td><input type="text" name="reg_phone" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td></tr>
+                <td width="50%" >Mobile number </td><td><input type="text" name="reg_phone" id="reg_phone" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td></tr>
            <tr style="height: 40px;" >
                 <td>
-                    Password </td><td> <input type="password" name="reg_pass" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td>
+                    Password </td><td> <input type="password" name="reg_pass" id="reg_pass" style="height: 30px;" onfocus="myFocusFunction(id)" onblur="myBlurFunction(id)" required ></td>
             </tr>
        
-            
-      <!--  <tr><td colspan="2" align="center">
-                <input type="submit" value="submit"></td></tr>
-         -->
         </table>
        <div align="center">
 		

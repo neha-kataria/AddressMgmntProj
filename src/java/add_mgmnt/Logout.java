@@ -1,5 +1,5 @@
 package add_mgmnt;
-
+// logout servlet to end the http session
 
 import java.io.IOException;
 import javax.servlet.ServletContext;
@@ -23,16 +23,19 @@ public class Logout extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // get the active session
         HttpSession session=req.getSession();
-        RegisterUserBean ob=(RegisterUserBean) session.getAttribute("logged_user");
-        ob.setLogged(false);
-        ServletContext ctx= this.getServletConfig().getServletContext();
-      //  UserBean all_users=(UserBean)req.getAttribute("userdetails");
-        UserBean all_users= (UserBean)ctx.getAttribute("userdetails");
-        int pos=all_users.getUserList().indexOf(ob);
-        all_users.getUserList().set(pos, ob);
-        session.invalidate();
-        resp.sendRedirect("Welcome.jsp");
+       
+        RegisterUserBean ob=(RegisterUserBean) session.getAttribute("logged_user"); //gets the logged user details
+        
+        ob.setLogged(false);    //sets the logged user logged out
+        ServletContext ctx= this.getServletConfig().getServletContext();    //gets the application context object
+     
+        UserBean all_users= (UserBean)ctx.getAttribute("userdetails");      //retrieves the list of all the registered users
+        int pos=all_users.getUserList().indexOf(ob);    //pos of the logged user in the registered user list
+        all_users.getUserList().set(pos, ob);       //sets the modified object at its respective position
+        session.invalidate();       //session invalidates
+        resp.sendRedirect("Welcome.jsp");       //redirects to welcome page
     }
     
     

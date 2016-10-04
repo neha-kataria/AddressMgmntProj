@@ -24,7 +24,7 @@ public class LoginAuth extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       // super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
+       
        PrintWriter out=resp.getWriter();
        //req.getSession()
      //   ArrayList<RegisterUserBean> ob=(ArrayList<RegisterUserBean>) this.getServletConfig().getServletContext().getAttribute("userdetails");
@@ -57,11 +57,12 @@ public class LoginAuth extends HttpServlet{
                        out.print("welcome "+req.getParameter("log_uname"));
                         req.setAttribute("log_phone",u.getPhone() );
                         u.setLogged(true);
-                      req.setAttribute("logged_user", u);
+              //        req.setAttribute("logged_user", u);
                        HttpSession session=req.getSession();  
                       session.setAttribute("logged_user", u);
-                       RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
-                       rd.forward(req, resp);
+                      resp.sendRedirect("UserProfile.jsp");
+              //         RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
+                //       rd.forward(req, resp);
                    }
                   
                }
@@ -78,6 +79,13 @@ public class LoginAuth extends HttpServlet{
        }
         out.close();
     }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        
+       resp.sendRedirect("Welcome.jsp");
+    }
+    
     
    
 }

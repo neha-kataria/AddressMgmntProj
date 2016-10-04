@@ -30,14 +30,15 @@
         <% UserBean all_users=(UserBean)application.getAttribute("userdetails"); 
         if(all_users!=null){
         int num=all_users.getUserList().size();
-         
+        
+        
        for(int i=0;i<num;i++){
             RegisterUserBean ob=all_users.getUserList().get(i);
             //ob.getAddress();
         %>
         <br><br><br>
         <table border="1"  style="margin-left: 10%;display: box; width: 40%;">
-            
+         
             <tr style="text-align: left; height:30px;">
                 
                 <td style="width:10%" ><%=i+1 %></td>

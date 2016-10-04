@@ -56,7 +56,8 @@ public class AddressList extends HttpServlet{
         
         
        
-        int count=Integer.parseInt(req.getParameter("countRows"));
+        int count=Integer.parseInt(req.getParameter("countRows"));  //
+        System.out.println(count);
         for(int i=1;i<=count;i++){
             String s="address"+i;
             if(!req.getParameter(s).equals(""))
@@ -64,25 +65,37 @@ public class AddressList extends HttpServlet{
             
             
         }
-        PrintWriter out=resp.getWriter();
-      // out.print(addr);
+       
         
        
         
         
-        
-        logged_user.setAddress(addr);
+        if(!addr.isEmpty())
+            logged_user.setAddress(addr);
         list.setMembers(logged_user);
-        req.setAttribute("logged_user", logged_user);
-      RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
-       rd.forward(req, resp);
+        session.setAttribute("logged_user", logged_user);
+       // req.setAttribute("logged_user", logged_user);
+     // RequestDispatcher rd=req.getRequestDispatcher("UserProfile.jsp");
+      // rd.forward(req, resp);
                 
       //  out.print(logged_user.getAddress());
-      //  resp.sendRedirect("UserProfile.jsp");
+        resp.sendRedirect("UserProfile.jsp");
         
-      out.close();
+     
       
     }
     
+   /*
+     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       // super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
+       HttpSession session=req.getSession();
+       if(session!=null){
+           session.invalidate();
+       resp.sendRedirect("Welcome.jsp");
+            }
+    }
+*/
+
     
 }
