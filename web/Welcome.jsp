@@ -38,6 +38,12 @@ function signIn()
         out.println("<h3 align=\"center\">"+request.getAttribute("Err_login")+"</h3>");
     }
 %>
+ <%
+    if(null!=request.getAttribute("Pswdchange"))
+    {
+        out.println("<h3 align=\"center\">"+request.getAttribute("Pswdchange")+"</h3>");
+    }
+%>
 	<div style="background-color: #EBECE6	 ; width: 30%;margin-left: 35%;margin-top: 10%; box-shadow:5px 5px #EEEFEA  ">
 	<div align="center" style="font-size: 28px;font-family: sans-serif;font-weight: bold;margin-left:5%;margin-top:40%;color: blue;">
             <br>
@@ -63,7 +69,7 @@ function signIn()
 <!--	<input type="submit" value="Sign In" style="color: blue; width: 250px;height: 40px;margin-left: 10% "> -->
 <input type="button" value="Sign In" onclick="signIn()" style="color: blue; width: 250px;height: 40px;margin-left: 10% ">
 	<br>
-		<p style="margin-left: 10%">New user? <a href="RegisterHere.jsp" >Register here</a> </p> 
+        <p style="margin-left: 10%">New user? <a href="RegisterHere.jsp" >Register here</a>&nbsp;&nbsp;&nbsp; <a href="ForgotPswd.jsp">Forgot Password</a></p> 
 		
 	</div>
 	</form>

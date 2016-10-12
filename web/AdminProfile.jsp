@@ -28,13 +28,14 @@
         <input type="button" name="admin" value="Logout" onclick="window.location='Welcome.jsp'" style="margin-left: 70%">
         <h2 align="left" style="font-family: sans-serif;font-size: 22px;font-weight: bold;color: green;margin-left: 30%;">List of users</h2>
         <table border="0"  style="margin-left: 30%;display: box; width: 40%;">
-            <tr style="text-align: left; height:30px;"> <th>S.No.</th><th>Username</th><th>Current Status</th><th>View Address</th></tr>
+           
         <% UserBean all_users=(UserBean)application.getAttribute("userdetails"); 
         if(all_users!=null){
         int num=all_users.getUserList().size();
+        %>
         
-        
-       for(int i=0;i<num;i++){
+         <tr style="text-align: left; height:30px;"> <th>S.No.</th><th>Username</th><th>Current Status</th><th>View Address</th></tr>
+        <% for(int i=0;i<num;i++){
             RegisterUserBean ob=all_users.getUserList().get(i);
             //ob.getAddress();
         %>
@@ -56,8 +57,9 @@
         <%
             }
        }
+else
         
-        %>
+        %><tr><td> No users so far!</td>
        </table>
         <h1></h1><br>
         <h2></h2>

@@ -58,9 +58,12 @@ public class RegisterUserBean implements Serializable{
     }
 
     public void setAddress(ArrayList<String> address) {
-        //this.address = address;
+        if(address!=null)
+        this.address = address;
+        else
+            this.address.clear();
         
-        this.address.addAll(address);
+       // this.address.addAll(address);
     }
     
     

@@ -35,7 +35,19 @@
         <servlet-name>Logout</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ForgotPswd</servlet-name>
+        <servlet-class>add_mgmnt.ForgotPswdServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPswd</servlet-name>
+        <url-pattern>/forgot_pswd</url-pattern>
+    </servlet-mapping>
     <listener>
         <listener-class>add_mgmnt.AllUserData</listener-class>
     </listener>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/Welcome.jsp</location>
+    </error-page>
 </web-app>

@@ -49,9 +49,9 @@ public class RegisterServlet extends HttpServlet{
          String msg="Registered successfuly";
          
          
-        String name=req.getParameter("reg_uname");
-        String phone=req.getParameter("reg_phone");
-        String pwd=req.getParameter("reg_pass");
+        String name=req.getParameter("reg_uname").trim();
+        String phone=req.getParameter("reg_phone").trim();
+        String pwd=req.getParameter("reg_pass").trim();
         
       //      PrintWriter out=resp.getWriter();
            if(ctx.getAttribute("userdetails")!=null){

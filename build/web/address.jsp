@@ -19,9 +19,20 @@
             function addRow(){
               
     var table = document.getElementById("mytable");
-    var row = table.insertRow(0);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
+   // var row = table.insertRow(0);
+      var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
+
+
+// Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+var cell1 = row.insertCell(0);
+
+var cell2 = row.insertCell(1);
+
+        
+        
+    //    var cell1 = row.insertCell(0);
+   // var cell2 = row.insertCell(1);
     cell1.innerHTML = "Address";
      var element=document.createElement("textarea");
               addRow.count++;
@@ -74,7 +85,7 @@ addRow.count=0;
         <% for(int i=0;i<ob.getAddress().size();i++){
             %><tr style="height: 70px;" >
             <td width="50%" ><%= "Address "+(i+1) %></td>
-            <td width="50%" ><input type="text" value="<%= ob.getAddress().get(i) %>" name=<%= "edit_address"+i %>></td> 
+            <td width="50%" ><input type="text" value="<%= ob.getAddress().get(i) %>" name="<%= "edit_address"+i %>"></td> 
            
         </tr> <% } %>
         </table>

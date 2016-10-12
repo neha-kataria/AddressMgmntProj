@@ -16,7 +16,9 @@
             
 function addRow(){
     var table=document.getElementById("addr_table");
-            addRow.c++;
+       //   addRow.c++;
+           ob.count++;
+     //      alert("count="+ob.count);
             addRow.first_flag++;
 
                         var rowCount = table.rows.length;
@@ -28,13 +30,13 @@ var cell1 = row.insertCell(0);
 
 var cell2 = row.insertCell(1);
 
-        cell1.innerHTML = "Address"; //+addRow.c;
+        cell1.innerHTML = "Address"+ob.count; //+addRow.c;
          var element=document.createElement("textarea");
            
               
                var c="address";
-               var res=c.concat(addRow.c);
-                //alert(res);
+               var res=c.concat(ob.count);
+            //    alert(res);
                 element.setAttribute("name",res);
                 element.setAttribute("rows","5");
                 element.setAttribute("cols","40");
@@ -43,10 +45,9 @@ var cell2 = row.insertCell(1);
                
             
                  cell2.appendChild(element);
-                 ob.count=addRow.c;
+              //   ob.count=addRow.c;
  document.getElementById("hiddenField").value=ob.count;
- //username
-//cell3.innerHTML=content;
+
 if(addRow.first_flag==1){
 var ele_button=document.createElement("input");
 ele_button.setAttribute("type","submit");
@@ -60,7 +61,7 @@ document.getElementById("submit_space").appendChild(ele_button);
 
 var del_but=document.getElementById("del_row");
 del_but.setAttribute("style","margin:auto;display:block;visibility: visible;");
-//<input type="submit" value="submit" style="position: absolute;top: auto; left:50%">
+
 }
 
 
@@ -79,7 +80,8 @@ function deleteRow() {
       ob.count--;
 
 
-                  //        alert("rowCount" + ob.count);
+                    //   alert("rowCount" + ob.count);
+             
      document.getElementById("hiddenField").value=ob.count;
      if(rowCount==0)
      {
@@ -97,6 +99,7 @@ var ob=new Object();
 </script>
     </head>
     <body>
+        
         <div style="margin-left: 20%;font-family: sans-serif;font-size: 28px;font-weight: bold;color: green">
             My Profile! 
        <!-- <div style="margin-left: 90%;"> -->
@@ -130,7 +133,8 @@ var ob=new Object();
         <tr style="height: 40px;" >
             <td width="50%"  >Your Address List :</td>
         
-        <% for(int i=0;i<logged_user.getAddress().size();i++){
+        <% //if(logged_user.getAddress().size()==0)
+            for(int i=0;i<logged_user.getAddress().size();i++){
             %>
             <tr style="height: 50px;" >
             <td width="50%" align="right" style="padding-right: 15px">Address <%=i+1 %>  </td>

@@ -5,7 +5,7 @@
             <url>src/java/add_mgmnt/AddressList.java</url>
             <bookmark id="1">
                 <name/>
-                <line>62</line>
+                <line>82</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,12 +13,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/AddressList.java</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/nbproject/build-impl.xml</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/Welcome.jsp</file>
             <file>file:/home/neha/NetBeansProjects/AddressManagement/src/java/add_mgmnt/RegisterServlet.java</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/RegisterHere.jsp</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/UserProfile.jsp</file>
-            <file>file:/home/neha/NetBeansProjects/AddressManagement/web/AdminProfile.jsp</file>
         </group>
     </open-files>
 </project-private>
